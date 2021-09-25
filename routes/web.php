@@ -13,13 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/menu1', function() {
+    return view('menu1');
+});
+Route::get('/menu2', function() {
+    return view('menu2');
+});
 
 Route::group(['middleware' => 'auth'], function() {
     //

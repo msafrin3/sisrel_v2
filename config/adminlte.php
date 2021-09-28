@@ -26,6 +26,18 @@
                 ],
                 'can' => ['admin']
             ],
+            [
+                'title' => 'Admin Setting',
+                'icon' => 'fa-cogs',
+                'submenu' => [
+                    [
+                        'title' => 'User Management',
+                        'icon' => 'fa-users',
+                        'url' => '/admin/users'
+                    ]
+                ],
+                'can' => ['admin']
+            ]
         ]
     ];
 

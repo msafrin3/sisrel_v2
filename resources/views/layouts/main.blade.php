@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 2 | Blank Page</title>
+        <title>{{ config('adminlte.title') }} | @yield('title')</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -18,6 +18,8 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
             folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="{{ url('') }}/adminlte/dist/css/skins/_all-skins.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="{{ url('') }}/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,6 +31,15 @@
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
+    <style>
+        .table {
+            border: 1px solid #ddd;
+        }
+        .table th {
+            background: #eee;
+        }
+    </style>
+    @yield('headerScripts')
     <body class="hold-transition skin-blue sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
@@ -248,10 +259,14 @@
         <script src="{{ url('') }}/adminlte/dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="{{ url('') }}/adminlte/dist/js/demo.js"></script>
+        <!-- DataTables -->
+        <script src="{{ url('') }}/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="{{ url('') }}/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
         <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()
         })
         </script>
+        @yield('footerScripts')
     </body>
 </html>

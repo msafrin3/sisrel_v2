@@ -20,5 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
-    //
+    
+    // ADMIN
+    Route::get('/admin/users', 'admin\UserController@index')->name('admin.users');
+    Route::post('/admin/users/getlist', 'admin\UserController@getsearchlist')->name('admin.users.list');
+    Route::get('/admin/users/add', 'admin\UserController@create')->name('admin.users.create');
+
 });

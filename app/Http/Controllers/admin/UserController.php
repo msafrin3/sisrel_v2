@@ -29,6 +29,11 @@ class UserController extends Controller
 
         $data['columns'] = array(
             array(
+                'dt' => '',
+                'label' => '',
+                'width' => '1%'
+            ),
+            array(
                 'dt' => 'name',
                 'label' => 'Name'
             ),

@@ -46,7 +46,7 @@
                         <thead>
                             <tr>
                                 @foreach($columns as $column)
-                                <th>{{ $column['label'] }}</th>
+                                <th @isset($column['width']) width="{{ $column['width'] }}" @endisset>{{ $column['label'] }}</th>
                                 @endforeach
                             </tr>
                         </thead>
@@ -81,10 +81,11 @@
                     'checkboxes': {
                         'selectRow': true,
                         'selectAllPages': true,
-                        'selectCallback': function() {
-                            updateSelectedRows();
-                        }
-                    }
+                        // 'selectCallback': function() {
+                        //     updateSelectedRows();
+                        // }
+                    },
+                    'className': 'select-checkbox',
                 }],
                 'select': {
                     'style': 'multi'

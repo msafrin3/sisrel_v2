@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="{{ url('') }}/adminlte/dist/css/skins/_all-skins.min.css">
         <!-- DataTables -->
         <link rel="stylesheet" href="{{ url('') }}/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url('') }}/plugins/dataTables/dataTables.checkboxes.css">
+        <link rel="stylesheet" href="//cdn.datatables.net/fixedcolumns/3.3.0/css/fixedColumns.dataTables.min.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -262,6 +264,9 @@
         <!-- DataTables -->
         <script src="{{ url('') }}/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
         <script src="{{ url('') }}/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script>
+        <script src="{{ url('') }}/plugins/dataTables/dataTables.checkboxes.min.js"></script>
         <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()

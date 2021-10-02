@@ -32,6 +32,7 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="stylesheet" href="{{ url('') }}/css/style.css">
     </head>
     <style>
         .table {
@@ -267,6 +268,7 @@
         <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script>
         <script src="{{ url('') }}/plugins/dataTables/dataTables.checkboxes.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script>
         $(document).ready(function () {
             $('.sidebar-menu').tree()

@@ -1,0 +1,29 @@
+.cl {
+    padding: 1px 10px 1px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+}
+.cl-primary {
+    background: #00a0ff;
+    color: white;
+}
+.cl-success {
+    background: #20af45;
+    color: white;
+}
+.cl-danger {
+    background: #c72020;
+    color: white;
+}
+.cl-warning {
+    background: #c9b10a;
+    color: white;
+}
+.cl-default {
+    background: #dfdfdf;
+    color: black;
+}
+.cl-dark {
+    background: #585858;
+    color: white;
+}

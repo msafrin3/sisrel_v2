@@ -13,37 +13,56 @@ class UserController extends Controller
 {
     
     public function index() {
-        $data['title'] = 'User Management';
+        $data['title'] = 'Pengurusan pengguna';
+        $data['url'] = 'admin/users';
         $data['datatable_route'] = route('admin.users.list');
         $data['breadcrumbs'] = [
             [
-                'label' => 'Home',
+                'label' => 'Laman Utama',
                 'link' => '/',
             ],
             [
-                'label' => 'User Management',
+                'label' => 'Pengurusan pengguna',
                 'link' => '/admin/users',
                 'active' => true
             ]
         ];
 
+        $user_list = User::select(['id', 'name'])->get()->toArray();
+        array_unshift($user_list, array('id' => '', 'name' => '- Semua Pengguna -'));
+
         $data['columns'] = array(
             array(
-                'dt' => '',
-                'label' => '',
+                'dt' => 'id',
+                'label' => 'id',
                 'width' => '1%'
             ),
             array(
                 'dt' => 'name',
-                'label' => 'Name'
+                'label' => 'Name',
+                'filter' => [
+                    'class' => 'col-md-2',
+                    'value' => $user_list
+                ]
             ),
             array(
                 'dt' => 'email',
                 'label' => 'Email'
             ),
             array(
+                'dt' => 'ic',
+                'label' => 'IC'
+            ),
+            array(
+                'dt' => 'roles',
+                'label' => 'Roles',
+                'searchable' => false,
+                'orderable' => false
+            ),
+            array(
                 'dt' => 'created_at',
-                'label' => 'Created At'
+                'label' => 'Created At',
+                'searchable' => false
             )
         );
 
@@ -51,9 +70,18 @@ class UserController extends Controller
             array(
                 'id' => 'createuser',
                 'class' => 'btn-primary',
-                'label' => 'Add new User',
+                'label' => 'Tambah Baru',
                 'link' => route('admin.users.create'),
-                'modal' => true
+                'modal' => true,
+                'icon' => 'fa-plus-circle'
+            )
+        );
+
+        $data['actions'] = array(
+            array(
+                'id' => 'delete',
+                'name' => 'Padam pengguna',
+                'msg' => 'Adakah anda pasti untuk padam pengguna?'
             )
         );
 
@@ -61,9 +89,33 @@ class UserController extends Controller
     }
 
     public function getsearchlist(Request $request) {
-        $users = DB::table('users')->get();
+        $users = DB::table('users');
 
-        return DataTables::of($users)->make(true);
+        if($request['name']) {
+            $users->where('users.id', $request['name']);
+        }
+
+        return DataTables::of($users)
+            ->editColumn('roles', function($query) {
+                $user = User::find($query->id);
+                $html = '';
+                foreach($user->roles as $role) {
+                    $html .= '<span class="cl cl-primary">'. $role->display_name .'</span>';
+                }
+                return $html;
+            })
+            ->filterColumn('name', function($query, $keyword) {
+                $query->where('users.name', 'like', '%'.$keyword.'%');
+            })
+            ->filterColumn('email', function($query, $keyword) {
+                $query->where('users.email', 'like', '%'.$keyword.'%');
+            })
+            ->rawColumns(['roles'])
+            ->make(true);
+    }
+
+    public function create() {
+        return view('sisrel.admin.users.add');
     }
 
 }

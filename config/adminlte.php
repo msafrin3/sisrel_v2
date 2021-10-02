@@ -5,33 +5,21 @@
         'brand' => '<img src="'.env('APP_URL').'/images/logo.png"> <b>Sis</b>ReL',
         'menu' => [
             [
-                'title' => 'Home',
+                'title' => 'Laman Utama',
                 'icon' => 'fa-home',
                 'url' => ''
             ],
             [
-                'title' => 'Dashboard',
-                'icon' => 'fa-dashboard',
-                'submenu' => [
-                    [
-                        'title' => 'Menu 1',
-                        'icon' => 'fa-circle-o',
-                        'url' => '/menu1'
-                    ],
-                    [
-                        'title' => 'Menu 2',
-                        'icon' => 'fa-circle-o',
-                        'url' => '/menu2'
-                    ]
-                ],
-                'can' => ['admin']
-            ],
-            [
-                'title' => 'Admin Setting',
+                'title' => 'Tetapan Admin',
                 'icon' => 'fa-cogs',
                 'submenu' => [
                     [
-                        'title' => 'User Management',
+                        'title' => 'Pejabat Kastam Daerah',
+                        'icon' => 'fa-building',
+                        'url' => '/admin/offices'
+                    ],
+                    [
+                        'title' => 'Pengurusan Pengguna',
                         'icon' => 'fa-users',
                         'url' => '/admin/users'
                     ]
